@@ -4,7 +4,7 @@ Simple password generator built with Python.
 """
 
 import random
-
+import sys
 
 chars = [
     "abcdefghijklmnopqrstuvwyxz",
@@ -15,17 +15,22 @@ chars = [
 
 
 def start():
-    print("Bea's Password Generator")
+    print("Bea's Password Generator\n")
+    args = sys.argv
     password_len = None
 
-    while isinstance(password_len, int) != True:
-        try:
-            password_len = int(input("Insert length for your password:\n"))
-        except KeyboardInterrupt:
-            break
-        except:
-            print("Please insert a number.\n")
-    generate_password(password_len)
+    if len(args) <= 1:
+        while isinstance(password_len, int) != True:
+            try:
+                password_len = int(input("Insert length for your password:\n"))
+            except KeyboardInterrupt:
+                break
+            except:
+                print("Please insert a number.\n")
+        generate_password(password_len)
+    elif len(args) > 1:
+        password_len = int(args[1])
+        generate_password(password_len)
 
 
 def generate_password(password_len):
