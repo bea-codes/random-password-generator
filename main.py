@@ -29,7 +29,6 @@ def start():
 
 
 def generate_password(password_len):
-    print("Generating your password...")
     list_password = []
     for c in range(password_len):
         type_of_char = chars[random.randrange(4)]
